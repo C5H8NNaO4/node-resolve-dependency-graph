@@ -1,8 +1,8 @@
 # Setup
 `npm install`
 
-#Build 
+# Build 
 `npm run build`
 
-#Babel node + nodemon
+# Babel node + nodemon
 `npm start`
