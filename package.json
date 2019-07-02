@@ -1,21 +1,25 @@
 {
-  "name": "test",
+  "name": "dep-resolve",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
-    "start": "nodemon --watch src --exec \"npm run build && babel-node lib/index.js\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
-  "author": "",
+  "author": {
+    "name": "Moritz Roessler",
+    "email": "moritz.roessler@gmail.com",
+    "url": "https://github.com/C5H8NNaO4/node-resolve-dep-list"
+  },
   "license": "ISC",
   "devDependencies": {
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",
-    "nodemon": "^1.19.0",
     "@babel/preset-env": "^7.4.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "node-tag-log": "git+https://github.com/C5H8NNaO4/node-tag-log.git"
+  }
 }

@@ -1,20 +1,19 @@
-Everything you need to get started with Babel 7. - Includes *nodemon* as dependency
+A simple helper to resolve dependencies from a flat dependency tree.
 
 # Setup
-`npm install`
-Installs all the depencies needed to compile your project + nodemon. 
+`npm install https://github.com/C5H8NNaO4/node-resolve-dep-list`
+
+# Quick Start 
+
+    import {resolve} from 'node-tag-log';
+    let {resolved} = resolve ({a: ['b'], b:['c'], c:['d'], d: []})
 
 ## Build 
 `npm run build`
  
  Runs `babel src --out-dir lib`
 
-## Babel node + nodemon
-`npm start`
-
-Runs `nodemon --exec babel-node src/index.js`
-
-### Dependencies
+### Dev Dependencies
 @babel/cli
 @babel/core
 @babel/node
