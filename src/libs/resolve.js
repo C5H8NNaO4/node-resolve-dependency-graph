@@ -43,17 +43,38 @@ function genNodes (graph) {
     return nodes;
 }
 
+const list = (result) => result.map (resolved => resolved.map (node => node.name));
+export const flat = (result) => result.reduce ((flat, cur) => [...flat, ...cur]);
+export const map  = (result) => result.map (sub => sub.slice (0)).reduce ((map,result) => ({
+    [result[result.length - 1]]: result,
+    ...map
+}),{})
+export const tree = (result) => {
+    let tmp = map(result);
+    let tree = {...tmp};
+    for (let key in tree) {
+        let flat = tree [key];
+        let node, first = node = {};
+        for (var i=0; i<flat.length-1; i++) {
+            var cur = flat [i];
+            node [cur] = (i==(flat.length-2))?null:{};
+            node = node [cur];
+        }
+        tree [key] = first;
+    }
+    return tree;
+}
+
 export const resolve = (depList) => { 
-    let resolved, result = [], global=[]
+    let result = [], global=[], combined, map;
     let nodes = genNodes (depList);
     for (var key in nodes) {
         let node = nodes [key];
 		if (!!~global.indexOf (node)) continue;
-        resolved = []
+        let resolved = []
         resolveDependencies (node, resolved, [], global);
         result.push (resolved);
     }
-    return {
-        resolved: resolved.map (node => node.name)
-    }
+
+    return list (result);
 }
