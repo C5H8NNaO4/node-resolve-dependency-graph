@@ -5,8 +5,11 @@ A simple helper to resolve dependencies from a flat dependency tree.
 
 # Quick Start 
 
-    import {resolve} from 'node-resolve-dep-list';
-    let {resolved} = resolve ({a: ['b'], b:['c'], c:['d'], d: []})
+    import {resolve, flat: flatten, map, tree: buildTree} from 'node-resolve-dep-list';
+    let resolved = resolve ({a: ['b'], b:['c'], c:['d'], d: [], e:['f'], f:[]})
+    let flat     = flatten(resolved);
+    let mapped   = map (resolved);
+    let tree     = buildTree (resolved)
 
 ## Build 
 `npm run build`
