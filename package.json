@@ -1,10 +1,11 @@
 {
-  "name": "dep-resolve",
+  "name": "node-resolve-dep-list",
   "version": "1.0.0",
-  "description": "",
+  "description": "Resolve a list of dependencies",
   "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
+    "version": "npm run build",
     "test": "jest"
   },
   "author": {
