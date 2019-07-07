@@ -1,6 +1,6 @@
 {
   "name": "node-resolve-dep-list",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Resolve a list of dependencies",
   "main": "src/index.js",
   "scripts": {
