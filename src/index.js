@@ -1,3 +1,2 @@
 "use strict"
-export * from './libs/resolve'
-//Babel 7 
+export * from './libs/resolve';

@@ -1,13 +1,10 @@
-import {debug} from 'node-tag-log/lib'
 const Node = (name) => ({
 	edges: [],
     name
-})
-
+});
 
 function addEdges (nodes, key, edges) {
     let node = nodes[key];
-    debug`Adding edges to ${node.name} - ${edges}`
     for (let edge of edges) {
         if (!nodes [edge]) throw new Error (`Unmet dependency '${edge}' at node ${node.name}`)
         node.edges.push (nodes[edge]);
@@ -15,11 +12,10 @@ function addEdges (nodes, key, edges) {
 }
 
 function resolveDependencies (node,resolved, unresolved, global) {
-  	debug`resolving node ${node.name}`
     unresolved.push (node);
     for (let edge of node.edges) {
         if (!~resolved.indexOf (edge)) {
-			if (!!~unresolved.indexOf (edge)) throw new Error ('Circular dependency');
+			if (!!~unresolved.indexOf (edge)) throw new Error (`Circular dependency '${edge}' at node '${node.name}`);
 			resolveDependencies (edge, resolved, unresolved, global)
         }
     }
@@ -31,7 +27,6 @@ function resolveDependencies (node,resolved, unresolved, global) {
 
 function genNodes (graph) {
     let nodes = {};
-    debug`Generating flat node list from graph ${graph}`
     for (var key in graph) {        
         nodes[key] = Node (key);
     }
@@ -39,19 +34,20 @@ function genNodes (graph) {
         let node = nodes[key], edges = graph[key];
         if (node) addEdges (nodes, key, edges);
     }
-
     return nodes;
 }
 
 const list = (result) => result.map (resolved => resolved.map (node => node.name));
 export const flat = (result) => result.reduce ((flat, cur) => [...flat, ...cur]);
-export const map  = (result) => result.map (sub => sub.slice (0)).reduce ((map,result) => ({
-    [result[result.length - 1]]: result,
-    ...map
-}),{})
+export const map  = (result) => result
+    .map (sub => sub.slice (0))
+    .reduce ((map,result) => Object.assign({
+        [result[result.length - 1]]: result
+    },map),{});
+
 export const tree = (result) => {
     let tmp = map(result);
-    let tree = {...tmp};
+    let tree = Object.assign ({},tmp);
     for (let key in tree) {
         let flat = tree [key];
         let node, first = node = {};
@@ -75,6 +71,5 @@ export const resolve = (depList) => {
         resolveDependencies (node, resolved, [], global);
         result.push (resolved);
     }
-
     return list (result);
 }
