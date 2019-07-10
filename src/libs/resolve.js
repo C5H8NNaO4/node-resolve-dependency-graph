@@ -50,10 +50,11 @@ export const tree = (result) => {
     let tree = Object.assign ({},tmp);
     for (let key in tree) {
         let flat = tree [key];
-        let node, first = node = {};
+        let node, first = node = flat.length==1?null:{};
         for (var i=0; i<flat.length-1; i++) {
             var cur = flat [i];
-            node [cur] = (i==(flat.length-2))?null:{};
+            console.log (cur, flat.length, flat.length-(i+1))
+            node [cur] = i==flat.length-2?null:{};
             node = node [cur];
         }
         tree [key] = first;
@@ -66,7 +67,7 @@ export const resolve = (depList) => {
     let nodes = genNodes (depList);
     for (var key in nodes) {
         let node = nodes [key];
-		if (!!~global.indexOf (node)) continue;
+		//if (!!~global.indexOf (node)) continue;
         let resolved = []
         resolveDependencies (node, resolved, [], global);
         result.push (resolved);
