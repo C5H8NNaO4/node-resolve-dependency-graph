@@ -11,18 +11,17 @@ function addEdges (nodes, key, edges) {
     }
 }
 
-function resolveDependencies (node,resolved, unresolved, global) {
+function resolveDependencies (node,resolved, unresolved) {
     unresolved.push (node);
     for (let edge of node.edges) {
         if (!~resolved.indexOf (edge)) {
 			if (!!~unresolved.indexOf (edge)) throw new Error (`Circular dependency '${edge}' at node '${node.name}`);
-			resolveDependencies (edge, resolved, unresolved, global)
+			resolveDependencies (edge, resolved, unresolved)
         }
     }
  	resolved.push (node)
-    if (!~global.indexOf (node))
-		global.push (node)
-	unresolved.splice(resolved.indexOf (node), 1)
+    unresolved.splice(resolved.indexOf (node), 1)
+    return resolved;
 }
 
 function genNodes (graph) {
@@ -53,7 +52,6 @@ export const tree = (result) => {
         let node, first = node = flat.length==1?null:{};
         for (var i=0; i<flat.length-1; i++) {
             var cur = flat [i];
-            console.log (cur, flat.length, flat.length-(i+1))
             node [cur] = i==flat.length-2?null:{};
             node = node [cur];
         }
@@ -63,13 +61,10 @@ export const tree = (result) => {
 }
 
 export const resolve = (depList) => { 
-    let result = [], global=[], combined, map;
-    let nodes = genNodes (depList);
+    let result = [], nodes = genNodes (depList);
     for (var key in nodes) {
-        let node = nodes [key];
-		//if (!!~global.indexOf (node)) continue;
-        let resolved = []
-        resolveDependencies (node, resolved, [], global);
+        let node = nodes [key], 
+            resolved = resolveDependencies (node, [], []);
         result.push (resolved);
     }
     return list (result);
