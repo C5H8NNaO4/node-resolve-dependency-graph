@@ -1,11 +1,11 @@
 {
-  "name": "node-resolve-dependency-map",
+  "name": "node-resolve-dependency-graph",
   "version": "1.2.0",
-  "description": "Resolve a list of dependencies",
+  "description": "Resolves a list of dependencies",
   "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
-    "version": "npm run build",
+    "version": "npm run build"
   },
   "author": {
     "name": "Moritz Roessler",
