@@ -37,7 +37,10 @@ function genNodes (graph) {
 }
 
 const list = (result) => result.map (resolved => resolved.map (node => node.name));
-export const flat = (result) => result.reduce ((flat, cur) => [...flat, ...cur]);
+export const flat = (result) => result
+    .reduce ((flat, cur) => [...flat, ...cur])
+    .reverse ().filter ((e,i,a) => !~a.indexOf (e,i+1)).reverse ()
+
 export const map  = (result) => result
     .map (sub => sub.slice (0))
     .reduce ((map,result) => Object.assign({
