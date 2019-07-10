@@ -6,7 +6,6 @@
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "version": "npm run build",
-    "test": "jest"
   },
   "author": {
     "name": "Moritz Roessler",
