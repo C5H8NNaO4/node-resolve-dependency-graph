@@ -1,5 +1,5 @@
 {
-  "name": "node-resolve-dep-list",
+  "name": "node-resolve-dependency-map",
   "version": "1.2.0",
   "description": "Resolve a list of dependencies",
   "main": "src/index.js",
