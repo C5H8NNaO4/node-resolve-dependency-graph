@@ -1,4 +1,4 @@
-A simple module to resolve dependencies from a dependency map. 
+Simple dependecy resolving algorithm. Expects a graph/map of dependencies.
 
 # Setup
 `npm install https://github.com/C5H8NNaO4/node-resolve-dep-list`
