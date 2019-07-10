@@ -10,7 +10,7 @@
   "author": {
     "name": "Moritz Roessler",
     "email": "moritz.roessler@gmail.com",
-    "url": "https://github.com/C5H8NNaO4/node-resolve-dep-list"
+    "url": "https://github.com/C5H8NNaO4/node-resolve-dependency-graph"
   },
   "license": "ISC",
   "devDependencies": {
