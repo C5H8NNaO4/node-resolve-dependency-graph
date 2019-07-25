@@ -5,7 +5,7 @@ Simple dependecy resolving algorithm. Expects an id map of dependencies.
 
 # Quick Start 
 
-    import {resolve, flat as flatten, map, tree as buildTree} from 'node-resolve-dependency-graph';
+    import {resolve,resolveMap, flat as flatten, map, tree as buildTree} from 'node-resolve-dependency-graph';
 
     let dependencyMap = {
         a: ['b', 'c'], 
