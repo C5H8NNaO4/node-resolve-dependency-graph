@@ -1,11 +1,12 @@
 {
   "name": "node-resolve-dependency-graph",
   "version": "1.3.0",
-  "description": "Resolves a list of dependencies",
+  "description": "resolves a map of dependencies",
   "main": "src/index.js",
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
-    "version": "npm run build"
+    "version": "npm run build",
+    "test": "jest --verbose"
   },
   "author": {
     "name": "Moritz Roessler",
@@ -17,9 +18,9 @@
     "@babel/cli": "^7.4.4",
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",
-    "@babel/preset-env": "^7.4.4"
+    "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0"
   },
-  "dependencies": {
-    "node-tag-log": "git+https://github.com/C5H8NNaO4/node-tag-log.git"
-  }
+  "dependencies": {}
 }
