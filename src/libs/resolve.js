@@ -37,6 +37,7 @@ function genNodes (graph) {
 }
 
 const list = (result) => result.map (resolved => resolved.map (node => node.name));
+
 export const flat = (result) => result
     .reduce ((flat, cur) => [...flat, ...cur])
     .reverse ().filter ((e,i,a) => !~a.indexOf (e,i+1)).reverse ()
@@ -63,12 +64,16 @@ export const tree = (result) => {
     return tree;
 }
 
-export const resolve = (depList) => { 
-    let result = [], nodes = genNodes (depList);
+export const resolve = (depMap) => { 
+    let result = [], nodes = genNodes (depMap);
     for (var key in nodes) {
         let node = nodes [key], 
             resolved = resolveDependencies (node, [], []);
         result.push (resolved);
     }
     return list (result);
+}
+
+export const resolveMap = (depMap) => {
+    return map (resolve (depMap))
 }
