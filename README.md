@@ -25,6 +25,11 @@ Simple dependecy resolving algorithm. Expects an id map of dependencies.
       [ 'f', 'e' ],
       [ 'f' ] ]
 
+## ES5 
+const depResolve = require ("node-resolve-dependency-graph/lib");
+
+## Views 
+
 You can transform the output using the helpers.
 
 `flat` returns a flat list, with duplicate nodes filtered out.  
@@ -59,6 +64,8 @@ You can transform the output using the helpers.
 `npm run build`
  
  Runs `babel src --out-dir lib`
+
+This package is precompiled.
 
 ## Test
 `npm run test`
