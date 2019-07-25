@@ -1,13 +1,21 @@
-Simple dependecy resolving algorithm. Expects a graph/map of dependencies.
+Simple dependecy resolving algorithm. Expects an id map of dependencies.
 
 # Setup
-`npm install https://github.com/C5H8NNaO4/node-resolve-dep-list`
+`npm install node-resolve-dependency-graph`
 
 # Quick Start 
 
-    import {resolve, flat: flatten, map, tree: buildTree} from 'node-resolve-dep-list';
+    import {resolve, flat as flatten, map, tree as buildTree} from 'node-resolve-dependency-graph';
 
-    let dependencyMap = {a: ['b', 'c'], b:[], c:['b'], d: ['b','e'], e:['f'], f:[]}
+    let dependencyMap = {
+        a: ['b', 'c'], 
+        b: [], 
+        c: ['b'], 
+        d: ['b','e'], 
+        e: ['f'], 
+        f: []
+    }
+
     let resolved = resolve (dependencyMap); 
 
     [ [ 'b', 'c', 'a' ],        
@@ -27,6 +35,8 @@ You can transform the output using the helpers.
 `map` returns a map with flat arrays for each dependency group. Intermediate groups are included.  
 
     let mapped   = map (resolved);
+    let mapped   = resolveMap (dependencyMap);
+
     { f: [ 'f' ],
       e: [ 'f', 'e' ],
       d: [ 'b', 'f', 'e', 'd' ],
@@ -45,7 +55,10 @@ You can transform the output using the helpers.
       a: { b: { c: null } } }
 
 
-## Build / ES5
+## Build  ES5
 `npm run build`
  
  Runs `babel src --out-dir lib`
+
+## Test
+`npm run test`
