@@ -4,6 +4,7 @@
   "description": "resolves a map of dependencies",
   "main": "src/index.js",
   "homepage": "https://github.com/C5H8NNaO4/node-resolve-dependency-graph",
+  "keywords": ["dependency", "resolution", "resolve", "dependencies" ],
   "scripts": {
     "build": "./node_modules/.bin/babel src --out-dir lib",
     "version": "npm run build",
