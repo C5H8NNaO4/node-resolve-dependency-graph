@@ -26,7 +26,7 @@ Simple dependecy resolving algorithm. Expects an id map of dependencies.
       [ 'f' ] ]
 
 ## ES5 
-const depResolve = require ("node-resolve-dependency-graph/lib");
+`const depResolve = require ("node-resolve-dependency-graph/lib");`
 
 ## Views 
 
