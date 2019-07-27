@@ -65,7 +65,7 @@ You can transform the output using the helpers.
  
  Runs `babel src --out-dir lib`
 
-This package is precompiled, which means the *lib* folder **is** included in the commit.
+This branch doesn't include the compiled version. If you need a precompiled version checkout master.
 
 ## Test
 `npm run test`
