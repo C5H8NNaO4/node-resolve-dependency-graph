@@ -34,13 +34,13 @@ You can transform the output using the helpers.
 
 `flat` returns a flat list, with duplicate nodes filtered out.  
 
-    let flat     = flatten(resolved);
+    let flat = flatten(resolved);
     [ 'b', 'c', 'a', 'f', 'e', 'd' ]
 
 `map` returns a map with flat arrays for each dependency group. Intermediate groups are included.  
 
-    let mapped   = map (resolved);
-    let mapped   = resolveMap (dependencyMap);
+    let mapped = map (resolved);
+    let mapped = resolveMap (dependencyMap);
 
     { f: [ 'f' ],
       e: [ 'f', 'e' ],
@@ -65,7 +65,7 @@ You can transform the output using the helpers.
  
  Runs `babel src --out-dir lib`
 
-This package is precompiled.
+This package is precompiled, which means the *lib* folder **is** included in the commit.
 
 ## Test
 `npm run test`
